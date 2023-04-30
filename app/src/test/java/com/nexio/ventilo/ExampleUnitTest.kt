@@ -1,4 +1,4 @@
-package com.example.ventilo
+package com.nexio.ventilo
 
 import org.junit.Test
 

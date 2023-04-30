@@ -1,4 +1,4 @@
-package com.example.ventilo.ui.theme
+package com.nexio.ventilo.ui.theme
 
 import android.app.Activity
 import android.os.Build

@@ -19,7 +19,7 @@ fun MyApp(){
         }
 
         composable(Screen.OnBoarding.route){
-            OnBoarding()
+            OnBoarding(navController = navController)
         }
     }
 }

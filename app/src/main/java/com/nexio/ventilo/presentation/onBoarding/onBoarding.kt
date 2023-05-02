@@ -25,16 +25,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
+import com.nexio.ventilo.presentation.navigation.Screen
 import com.nexio.ventilo.ui.theme.VentiloTheme
 import kotlinx.coroutines.launch
 
 @ExperimentalPagerApi
 @Composable
-@Preview
-fun OnBoarding() {
+fun OnBoarding(navController: NavHostController) {
 
     VentiloTheme() {
 
@@ -42,7 +43,7 @@ fun OnBoarding() {
     val scope= rememberCoroutineScope()
 
     Column(Modifier.fillMaxSize()) {
-        TopSection()
+        TopSection(navController = navController)
 
         val items=OnBoardingItem.get()
         val state= rememberPagerState(pageCount = items.size)
@@ -59,10 +60,18 @@ fun OnBoarding() {
         }
 
         BottomSection(size = items.size, index = state.currentPage) {
-            if (state.currentPage+1 <items.size)
+            if (state.currentPage+1 <items.size){
                 scope.launch {
                     state.scrollToPage(state.currentPage+1)
                 }
+            }else{
+                navController.navigate(Screen.SignIn.route){
+                    popUpTo(Screen.OnBoarding.route) {
+                        inclusive = true
+                    }
+                }
+            }
+
         }
 
     }
@@ -71,7 +80,7 @@ fun OnBoarding() {
 }
 
 @Composable
-fun TopSection() {
+fun TopSection(navController: NavHostController) {
     Box(
         modifier= Modifier
             .fillMaxWidth()
@@ -82,7 +91,13 @@ fun TopSection() {
 
         //skip button
         TextButton(
-            onClick = {},
+            onClick = {
+                navController.navigate(Screen.SignIn.route){
+                    popUpTo(Screen.OnBoarding.route) {
+                        inclusive = true
+                    }
+                }
+                      },
             modifier=Modifier.align(CenterEnd)
         ) {
             Text("Skip",color=MaterialTheme.colors.onBackground)

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Ventilo</string>
+    <string name="onText">This is a testy text</string>
 </resources>

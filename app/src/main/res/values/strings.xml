@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Ventilo</string>
     <string name="onText">This is a testy text</string>
+    <string name="web_client_id">39402904392-gti8d36kna407lsemtvnk6ibqpegtmbj.apps.googleusercontent.com</string>
 </resources>

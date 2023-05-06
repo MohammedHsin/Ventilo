@@ -10,7 +10,6 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.nexio.ventilo.R
-
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.CancellationException
 
